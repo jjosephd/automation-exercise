@@ -1,4 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
+import { User } from '../../data/login.data';
 
 export class SignUpPage {
   private readonly signupPageHeader: Locator;
@@ -68,6 +69,19 @@ export class SignUpPage {
   fillPasswordField = async (password: string) => {
     await this.passwordInputField.fill(password);
   };
+
+  fillFirstName = async (firstName: string) => {};
+  fillLastName = async (lastName: string) => {};
+  fillCompany = async (company: string) => {};
+  fillAddress = async (address: string) => {};
+  fillSecondaryAddress = async (address: string) => ({});
+  selectCountryOption = async (value: string) => {};
+  fillState = async (state: string) => {};
+  fillCity = async (city?: string) => {};
+  fillZipcode = async (zipcode?: string) => {};
+  fillMobileNumber = async (number: string) => {};
+
+  async fillAddressInformation(user: User) {}
 
   expectDayInputFieldVisible = async () => {
     await expect(this.dayInput).toBeVisible();
