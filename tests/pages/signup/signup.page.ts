@@ -30,6 +30,7 @@ export class SignUpPage {
       name: 'Receive special offers from',
     });
   }
+
   expectSignupPageVisible = async () => {
     await expect(this.signupPageHeader).toBeVisible();
   };
@@ -51,11 +52,13 @@ export class SignUpPage {
   };
 
   /**
-   *
-   * @param name name to test
-   * @param email email to test
-   *
+   * @param name Name to test
+   * @param email Email to test
    */
+  expectNameAndEmailToBeFilled = async (name: string, email: string) => {
+    await this.expectNameInputToBeFilled(name);
+    await this.expectEmailInputToBeFilled(email);
+  };
   fillNameInputField = async (name: string) => {
     await this.nameInputField.fill(name);
   };
