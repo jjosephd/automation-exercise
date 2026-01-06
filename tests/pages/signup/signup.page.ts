@@ -15,8 +15,8 @@ export class SignUpPage {
 
   constructor(public readonly page: Page) {
     this.signupPageHeader = page.getByText('Enter Account Information');
-    this.titleOne = page.getByLabel('id_title1');
-    this.titleTwo = page.getByLabel('id_title2');
+    this.titleOne = page.getByRole('radio', { name: 'Mr.' }); // needs to be fixed
+    this.titleTwo = page.getByRole('radio', { name: 'Mrs.' }); // needs to be fixed
     this.nameInputField = page.getByTestId('name');
     this.emailInputField = page.getByTestId('email');
     this.passwordInputField = page.getByTestId('password');
@@ -38,7 +38,7 @@ export class SignUpPage {
   selectTitleOption = async () => {
     await expect(this.titleOne).toBeVisible();
     await expect(this.titleTwo).toBeVisible();
-    await this.titleOne.click();
+    await this.titleOne.check();
   };
 
   expectNameInputToBeFilled = async (name: string) => {

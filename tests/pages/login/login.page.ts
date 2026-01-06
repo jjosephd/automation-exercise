@@ -5,8 +5,10 @@ export class LoginPage {
   private readonly nameInput: Locator;
   private readonly emailInput: Locator;
   private readonly signupBtn: Locator;
+  private readonly existingEmailErrorMsg: Locator;
   constructor(public readonly page: Page) {
     this.signUpText = page.getByText('New User Signup!');
+    this.existingEmailErrorMsg = page.getByText('Email Address already exist!');
     this.nameInput = page.getByTestId('signup-name');
     this.emailInput = page.getByTestId('signup-email');
     this.signupBtn = page.getByTestId('signup-button');
@@ -20,5 +22,9 @@ export class LoginPage {
     await this.nameInput.fill(name);
     await this.emailInput.fill(email);
     await this.signupBtn.click();
+  };
+
+  expectEmailErrorMsg = async () => {
+    await expect(this.existingEmailErrorMsg).toBeVisible();
   };
 }
