@@ -4,6 +4,7 @@ export const SIGNUP_PAGE = 'https://automationexercise.com/signup';
 export interface User {
   name: string;
   email: string;
+  birthday: Birthday;
   password: string;
   firstName: string;
   lastName: string;
@@ -14,10 +15,20 @@ export interface User {
   zipcode: string;
   mobileNumber: string;
 }
+export interface Birthday {
+  day: string;
+  month: string;
+  year: string;
+}
 
 export const DEFAULT_USER = {
   name: 'Test User',
   password: 'Password123!', // Good to keep a default password here
+  birthday: {
+    day: '1',
+    month: 'January',
+    year: '1996',
+  },
   email: '',
   firstName: 'Test',
   lastName: 'User',

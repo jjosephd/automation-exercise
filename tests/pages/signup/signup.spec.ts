@@ -32,17 +32,13 @@ test.describe('Sign up page tests', () => {
     await signupPage.expectNameAndEmailToBeFilled(user.name, user.email);
     await signupPage.expectEmailInputToBeDisabled();
 
-    // Interact with password input field
-    await signupPage.fillPasswordField(user.password);
-
-    // Interact with DOB inputs
-    await signupPage.clickDayInput();
-    await signupPage.selectDayOption('4');
-    await signupPage.selectMonthOption('January');
-    await signupPage.selectYearOption('1996');
+    await signupPage.fillAccountInformation(user);
 
     // Interact with checkbox options
     await signupPage.selectNewsLetterCheckbox();
     await signupPage.selectOffersCheckbox();
+
+    // Fill Address Information
+    await signupPage.fillAddressInformation(user);
   });
 });
