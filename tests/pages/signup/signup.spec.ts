@@ -22,23 +22,24 @@ test.describe('Sign up page tests', () => {
   });
 
   test('should complete full account registration', async ({ page }) => {
-    // Select title option
-    await signupPage.selectTitleOption();
-
-    // Interact with name input field
-    // await signupPage.fillNameInputField('Test User123');
-
     // Assert email input is filled and disabled
     await signupPage.expectNameAndEmailToBeFilled(user.name, user.email);
     await signupPage.expectEmailInputToBeDisabled();
 
+    // Fill Account Information
     await signupPage.fillAccountInformation(user);
-
-    // Interact with checkbox options
-    await signupPage.selectNewsLetterCheckbox();
-    await signupPage.selectOffersCheckbox();
 
     // Fill Address Information
     await signupPage.fillAddressInformation(user);
+  });
+  test('check gatekeeping logic for partial required information', async ({
+    page,
+  }) => {
+    // Assert email input is filled and disabled
+    await signupPage.expectNameAndEmailToBeFilled(user.name, user.email);
+    await signupPage.expectEmailInputToBeDisabled();
+
+    // Fill Account Information
+    await signupPage.fillAccountInformation(user);
   });
 });

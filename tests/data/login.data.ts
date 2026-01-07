@@ -39,10 +39,24 @@ export const DEFAULT_USER = {
   zipcode: '20267',
   mobileNumber: '3334445555',
 };
+export const USER_CREDENTIALS_PARTIAL = {
+  name: 'Test User',
+  password: 'Password123!', // Good to keep a default password here
+  birthday: {
+    day: '1',
+    month: 'January',
+    year: '1996',
+  },
+  email: '',
+};
 
 // Return a fresh object every time it's called
 export const getNewUser = (): User => ({
   ...DEFAULT_USER,
   // Then only override the dynamic part
   email: `testuser_${Date.now()}@test.com`,
+});
+export const updateUser = (user: User, updates: Partial<User>): User => ({
+  ...user,
+  ...updates,
 });

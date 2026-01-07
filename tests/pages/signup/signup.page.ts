@@ -112,6 +112,7 @@ export class SignUpPage {
   };
 
   async fillAccountInformation(user: User) {
+    await this.selectTitleOption();
     await this.fillNameInputField(user.name);
     await this.fillPasswordField(user.password);
     await this.selectDayOption(user.birthday.day);
