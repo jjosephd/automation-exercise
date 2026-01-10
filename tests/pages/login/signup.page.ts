@@ -168,9 +168,6 @@ export class SignUpPage {
     await this.fillCity(user.city);
     await this.fillZipcode(user.zipcode);
     await this.fillMobileNumber(user.mobileNumber);
-  }
-
-  async submitAccountCreation() {
     await this.submitBtn.click();
   }
 
