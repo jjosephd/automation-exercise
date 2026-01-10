@@ -104,7 +104,5 @@ test.describe('Login page Testing', () => {
         await expect(page).toHaveURL(/\/login/);
       });
     });
-
-    // Parameterized validation tests using forEach (Playwright-compatible)
   });
 });

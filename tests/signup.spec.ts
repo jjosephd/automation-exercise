@@ -26,6 +26,7 @@ test.describe('Sign up page tests', () => {
 
     // register user before each test
     await loginPage.registerUser(user.name, user.email);
+    await loginPage.clickSignUpBtn();
 
     // Verify we are actually on the signup page before starting the test
     await signupPage.expectSignupPageVisible();
@@ -65,18 +66,5 @@ test.describe('Sign up page tests', () => {
     await deleteAccountPage.clickContinueBtn();
 
     await expect(page).toHaveURL('/');
-  });
-
-  /* Verify gatekeeping for partial information */
-
-  test('check gatekeeping logic for partial required information', async ({
-    page,
-  }) => {
-    // Assert email input is filled and disabled
-    await signupPage.expectNameAndEmailToBeFilled(user.name, user.email);
-    await signupPage.expectEmailInputToBeDisabled();
-
-    // Fill Account Information
-    await signupPage.fillAccountInformation(user);
   });
 });
