@@ -83,8 +83,12 @@ test.describe('Login page Testing', () => {
 
   test.describe('Quick checks', async () => {
     test('verify email input is visible', async () => {
-      await loginPage.fillLoginForm(user);
-      await loginPage.expectEmailVisible(user);
+      await test.step('Fill in the login form', async () => {
+        await loginPage.fillLoginForm(user);
+      });
+      await test.step('Verify email input is filled', async () => {
+        await loginPage.expectEmailVisible(user);
+      });
     });
   });
 
