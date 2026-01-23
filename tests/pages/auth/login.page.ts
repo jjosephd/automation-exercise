@@ -10,6 +10,7 @@ export class LoginPage {
   private readonly loginEmailInput: Locator;
   private readonly loginPasswordInput: Locator;
   private readonly loginBtn: Locator;
+  private readonly loginValidationError: Locator;
 
   constructor(private readonly page: Page) {
     this.signUpText = page.getByText('New User Signup!');
@@ -21,6 +22,10 @@ export class LoginPage {
     this.loginEmailInput = page.getByTestId('login-email');
     this.loginPasswordInput = page.getByTestId('login-password');
     this.loginBtn = page.getByTestId('login-button');
+
+    this.loginValidationError = page.getByText(
+      'Your email or password is incorrect!',
+    );
   }
 
   expectSignupTextToBeVisible = async () => {
@@ -63,5 +68,8 @@ export class LoginPage {
 
   async expectEmailVisible(user: User) {
     await expect(this.loginEmailInput).toHaveValue(user.email);
+  }
+  async expectLoginValidationErrVisible() {
+    await expect(this.loginValidationError).toBeVisible();
   }
 }

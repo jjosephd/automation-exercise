@@ -53,8 +53,7 @@ export const USER_CREDENTIALS_PARTIAL = {
 // Return a fresh object every time it's called
 export const getNewUser = (): User => ({
   ...DEFAULT_USER,
-  // Then only override the dynamic part
-  email: `testuser_${Date.now()}@test.com`,
+  email: `user_${Date.now()}_${Math.floor(Math.random() * 1000)}@test.com`,
 });
 export const updateUser = (user: User, updates: Partial<User>): User => ({
   ...user,

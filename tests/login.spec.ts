@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/home/home.page';
 import { LoginPage } from './pages/auth/login.page';
-import { getNewUser } from './data/auth.data';
 import { SignUpPage } from './pages/auth/signup.page';
 import { AccountCreated } from './pages/auth/account-created.page';
 import * as Data from './data/auth.data';
@@ -9,7 +8,7 @@ import * as Data from './data/auth.data';
 async function completeFullRegistration(
   signupPage: SignUpPage,
   accountCreatedPage: AccountCreated,
-  user: Data.User
+  user: Data.User,
 ) {
   await signupPage.fillAccountInformation(user);
   await signupPage.fillAddressInformation(user);
@@ -28,8 +27,42 @@ test.describe('Login page Testing', () => {
   let signupPage: SignUpPage;
   let accountCreatedPage: AccountCreated;
   let homePage: HomePage;
+
   let user: Data.User;
   let invalidUser: Data.User;
+
+  /* ============================================
+     SETUP TEST
+     ============================================ */
+
+  test.beforeAll(async ({ browser }) => {
+    // Create a setup context
+    const context = await browser.newContext();
+    const page = await context.newPage();
+
+    // Instantiate temp Page Objects for setup
+    const setupLogin = new LoginPage(page);
+    const setupSignup = new SignUpPage(page);
+    const setupAccount = new AccountCreated(page);
+
+    // One-time Data Setup
+    user = Data.getNewUser();
+    invalidUser = getInvalidUser(user);
+
+    /* ============================================
+     Sign up - the login validation relies on an existing
+     user being created
+     ============================================ */
+
+    await setupLogin.goto();
+    await setupLogin.registerUser(user.name, user.email);
+    await setupLogin.clickSignUpBtn();
+
+    // Use the setup-scoped instances here
+    await completeFullRegistration(setupSignup, setupAccount, user);
+
+    await context.close();
+  });
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
@@ -37,23 +70,6 @@ test.describe('Login page Testing', () => {
     accountCreatedPage = new AccountCreated(page);
     homePage = new HomePage(page);
 
-    user = Data.getNewUser();
-
-    invalidUser = getInvalidUser(user);
-
-    await loginPage.goto();
-
-    /* ============================================
-     Sign up - the login validation relies on an existing
-     user being created
-     ============================================ */
-
-    await loginPage.registerUser(user.name, user.email);
-    await loginPage.clickSignUpBtn();
-    await signupPage.expectSignupPageVisible();
-    await completeFullRegistration(signupPage, accountCreatedPage, user);
-    await homePage.verifyLoggedInUser(user);
-    await homePage.clickLogoutBtn();
     await loginPage.goto(); // Return to login page
   });
 
@@ -106,6 +122,9 @@ test.describe('Login page Testing', () => {
       });
       await test.step('Verify page stays on login', async () => {
         await expect(page).toHaveURL(/\/login/);
+      });
+      await test.step('Verify incorrect password text is displayed', async () => {
+        await loginPage.expectLoginValidationErrVisible();
       });
     });
   });
