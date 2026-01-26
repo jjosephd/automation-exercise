@@ -153,5 +153,18 @@ test.describe('Authentication', () => {
     });
   });
 
-  test.describe('Existing Email Form Validation', () => {});
+  test.describe('Existing Email Form Validation', () => {
+    test('Verify error for existing email', async ({ page }) => {
+      await test.step('Verify we are on signup page', async () => {
+        await expect(page).toHaveURL(/\/login/);
+      });
+      await test.step('Fill in signup input', async () => {
+        await loginPage.registerUser('Test User', 'test@me.com');
+        await loginPage.clickSignUpBtn();
+      });
+      await test.step('Verify error message -> Email address already exist!', async () => {
+        await loginPage.expectEmailErrorMsg();
+      });
+    });
+  });
 });
