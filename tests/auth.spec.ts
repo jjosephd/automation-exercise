@@ -19,20 +19,21 @@ async function completeFullRegistration(
 const getInvalidUser = (user: Data.User): Data.User => ({
   ...user,
   // Then only override the dynamic part
-  password: `abc`,
+  password: `invalid_pass`,
 });
 
-test.describe('Login page Testing', () => {
-  let loginPage: LoginPage;
-  let signupPage: SignUpPage;
-  let accountCreatedPage: AccountCreated;
-  let homePage: HomePage;
+test.describe('Authentication', () => {
+  let loginPage: LoginPage; // Instantiate Login Page
+  let signupPage: SignUpPage; // Instantiate Sign Up Page
+  let accountCreatedPage: AccountCreated; // Instatiate Account created page
+  let homePage: HomePage; // Instatiate home page
 
   let user: Data.User;
-  let invalidUser: Data.User;
+  let invalidPassUser: Data.User;
 
   /* ============================================
-     SETUP TEST
+     SETUP TEST - Register user once to be 
+     reused for tests
      ============================================ */
 
   test.beforeAll(async ({ browser }) => {
@@ -47,7 +48,7 @@ test.describe('Login page Testing', () => {
 
     // One-time Data Setup
     user = Data.getNewUser();
-    invalidUser = getInvalidUser(user);
+    invalidPassUser = getInvalidUser(user);
 
     /* ============================================
      Sign up - the login validation relies on an existing
@@ -64,13 +65,18 @@ test.describe('Login page Testing', () => {
     await context.close();
   });
 
+  /* ============================================
+     Instantiate the pages for the current 
+     test and navigate to the URL (login page)
+     ============================================ */
+
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     signupPage = new SignUpPage(page);
     accountCreatedPage = new AccountCreated(page);
     homePage = new HomePage(page);
 
-    await loginPage.goto(); // Return to login page
+    await loginPage.goto(); // Navigate to login page
   });
 
   /* ============================================
@@ -79,8 +85,7 @@ test.describe('Login page Testing', () => {
      ============================================ */
 
   test.describe('Smoke Test', () => {
-    test('complete login flow @smoke', async ({ page }) => {
-      // Fill login form
+    test('complete login flow with valid login @smoke', async ({ page }) => {
       await test.step('Interact with form', async () => {
         await loginPage.fillLoginForm(user);
       });
@@ -89,6 +94,25 @@ test.describe('Login page Testing', () => {
       });
       await test.step('Verify user is logged in', async () => {
         await homePage.verifyLoggedInUser(user);
+      });
+    });
+  });
+
+  test.describe('Logout Flow', () => {
+    test('complete logout flow', async ({ page }) => {
+      // First, log in (beforeEach only navigates to the login page)
+      await test.step('Log in first', async () => {
+        await loginPage.fillLoginForm(user);
+        await loginPage.clickLoginBtn();
+        await homePage.verifyLoggedInUser(user);
+      });
+
+      await test.step('Click logout button', async () => {
+        await homePage.clickLogoutBtn();
+      });
+
+      await test.step('Verify redirected to login page', async () => {
+        await expect(page).toHaveURL(/\/login/);
       });
     });
   });
@@ -112,10 +136,10 @@ test.describe('Login page Testing', () => {
      GATEKEEPING / NEGATIVE TESTS
      ============================================ */
 
-  test.describe('Form Validation', () => {
+  test.describe('Invalid Password Form Validation', () => {
     test('stays on page when submitting invalid data', async ({ page }) => {
       await test.step('Fill login form with invalid password', async () => {
-        await loginPage.fillLoginForm(invalidUser);
+        await loginPage.fillLoginForm(invalidPassUser);
       });
       await test.step('Click the login button', async () => {
         await loginPage.clickLoginBtn();
@@ -128,4 +152,6 @@ test.describe('Login page Testing', () => {
       });
     });
   });
+
+  test.describe('Existing Email Form Validation', () => {});
 });
