@@ -10,6 +10,7 @@ export class ContactPage {
   private readonly fileInput: Locator;
   private readonly submitBtn: Locator;
   private readonly successMsg: Locator;
+  private readonly successBtn: Locator;
 
   constructor(private readonly page: Page) {
     this.heading = page.getByRole('heading', { name: 'Get In Touch' });
@@ -22,6 +23,7 @@ export class ContactPage {
     this.successMsg = page
       .locator('#contact-page')
       .getByText('Success! Your details have been submitted successfully.');
+    this.successBtn = page.getByRole('button', { name: 'Home' });
   }
 
   /* ============================================
@@ -62,6 +64,10 @@ export class ContactPage {
 
   async clickSubmit() {
     await this.submitBtn.click();
+  }
+
+  async clickSuccessBtn() {
+    await this.successBtn.click();
   }
 
   acceptDialog() {

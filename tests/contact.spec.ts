@@ -28,7 +28,9 @@ const getInvalidUser = (user: User, overrides: Partial<User>): User => ({
 test.describe('Contact Form testing', async () => {
   let contactPage: ContactPage;
   let user: User;
+
   let badEmailUser: User;
+  let badNameUser: User;
   /* ============================================
      Instantiate the pages for the current 
      test and navigate to the URL (contact page)
@@ -40,6 +42,7 @@ test.describe('Contact Form testing', async () => {
     contactPage.acceptDialog();
 
     badEmailUser = getInvalidUser(user, { email: 'invalid-email' });
+    badNameUser = getInvalidUser(user, { name: '' });
   });
 
   /* ============================================
@@ -60,6 +63,10 @@ test.describe('Contact Form testing', async () => {
       await test.step('Confirm success message', async () => {
         await contactPage.expectSuccessMsgVisible();
       });
+      await test.step('Click Home button and verify that landed to home page successfully', async () => {
+        await contactPage.clickSuccessBtn();
+        await expect(page).toHaveURL('');
+      });
     });
   });
 
@@ -78,9 +85,19 @@ test.describe('Contact Form testing', async () => {
         await expect(page).toHaveURL(/\/contact_us/);
       });
     });
+
     test('test email format validation', async ({ page }) => {
       await test.step('Fill email input', async () => {
         await completeFullContactForm(contactPage, badEmailUser);
+      });
+      await test.step('Verify we are still on contact page', async () => {
+        await expect(page).toHaveURL(/\/contact_us/);
+      });
+    });
+
+    test('test empty name field', async ({ page }) => {
+      await test.step('Fill name input', async () => {
+        await completeFullContactForm(contactPage, badNameUser);
       });
       await test.step('Verify we are still on contact page', async () => {
         await expect(page).toHaveURL(/\/contact_us/);
