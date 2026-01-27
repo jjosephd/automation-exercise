@@ -20,9 +20,15 @@ async function completeFullContactForm(contactPage: ContactPage, user: User) {
   await contactPage.uploadFile(filePath);
 }
 
+const getInvalidUser = (user: User, overrides: Partial<User>): User => ({
+  ...user,
+  ...overrides,
+});
+
 test.describe('Contact Form testing', async () => {
   let contactPage: ContactPage;
   let user: User;
+  let badEmailUser: User;
   /* ============================================
      Instantiate the pages for the current 
      test and navigate to the URL (contact page)
@@ -31,7 +37,9 @@ test.describe('Contact Form testing', async () => {
     contactPage = new ContactPage(page);
     await contactPage.goto();
     user = getNewUser();
-    page.on('dialog', (dialog) => dialog.accept());
+    contactPage.acceptDialog();
+
+    badEmailUser = getInvalidUser(user, { email: 'invalid-email' });
   });
 
   /* ============================================
@@ -59,12 +67,20 @@ test.describe('Contact Form testing', async () => {
      GATEKEEPING / NEGATIVE TESTS
      ============================================ */
 
-  test.describe('NEGATIVE TEST - Empty Contact Form', () => {
+  test.describe('NEGATIVE TESTS - Test negative paths', () => {
     test('stays on page when submit button is clicked without filling inputs', async ({
       page,
     }) => {
       await test.step('Click submit button', async () => {
         await contactPage.clickSubmit();
+      });
+      await test.step('Verify we are still on contact page', async () => {
+        await expect(page).toHaveURL(/\/contact_us/);
+      });
+    });
+    test('test email format validation', async ({ page }) => {
+      await test.step('Fill email input', async () => {
+        await completeFullContactForm(contactPage, badEmailUser);
       });
       await test.step('Verify we are still on contact page', async () => {
         await expect(page).toHaveURL(/\/contact_us/);

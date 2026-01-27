@@ -63,4 +63,8 @@ export class ContactPage {
   async clickSubmit() {
     await this.submitBtn.click();
   }
+
+  acceptDialog() {
+    this.page.on('dialog', (dialog) => dialog.accept()); //
+  }
 }
