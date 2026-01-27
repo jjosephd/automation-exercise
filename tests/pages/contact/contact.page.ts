@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { User } from '../../data/auth.data';
 
 export class ContactPage {
   private readonly heading: Locator;
