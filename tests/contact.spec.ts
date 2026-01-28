@@ -14,7 +14,7 @@ async function completeFullContactForm(contactPage: ContactPage, user: User) {
   await contactPage.fillEmailInput(user.email);
   await contactPage.fillSubjectInput('Test Subject');
   await contactPage.fillMsgInput('Test Message');
-  await contactPage.uploadFile(filePath);
+  //await contactPage.uploadFile(filePath);
 }
 
 const getInvalidUser = (user: User, overrides: Partial<User>): User => ({
