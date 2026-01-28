@@ -8,10 +8,7 @@ import path from 'path';
    HELPER: Reusable contact form flow
    Reduces duplication across tests
    ============================================ */
-const filePath = path.resolve(
-  __dirname,
-  '/Users/admin/Desktop/Coding/playwright-practice/tests/fixtures/debug2.png',
-);
+const filePath = path.resolve(__dirname, 'debug2.png');
 async function completeFullContactForm(contactPage: ContactPage, user: User) {
   await contactPage.fillNameInput(user.name);
   await contactPage.fillEmailInput(user.email);
