@@ -1,3 +1,6 @@
+// Verify user is navigated to ALL PRODUCTS page successfully
+// Verify that detail detail is visible: product name, category, price, availability, condition, brand
+
 import { test, expect } from '@playwright/test';
 import { ProductsPage } from './pages/products/products.page';
 import { ProductDetailsPage } from './pages/products/product-details.page';
