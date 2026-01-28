@@ -30,7 +30,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    // Tell Playwright to look for 'data-qa' when you call getByTestId()
+    // Tell Playwright to look for 'data-qa' when using getByTestId()
     testIdAttribute: 'data-qa',
   },
 

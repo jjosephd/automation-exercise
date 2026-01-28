@@ -54,7 +54,7 @@ test.describe('Sign up page tests', () => {
 
     // Verify logged in user
     await homePage.verifyLoggedInUser(user);
-    await page.screenshot({ path: 'debug.png' });
+    //await page.screenshot({ path: 'debug.png' });
 
     // Delete account
     await homePage.clickDeleteBtn();
