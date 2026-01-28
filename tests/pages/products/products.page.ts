@@ -14,6 +14,10 @@ export class ProductsPage {
     this.viewProduct = page.getByRole('link', { name: 'View Product' }).first();
   }
 
+  async goto() {
+    await this.page.goto('/products');
+  }
+
   async expectHeadingVisible() {
     await expect(this.heading).toBeVisible();
   }
@@ -24,5 +28,12 @@ export class ProductsPage {
 
   async clickViewProduct() {
     await this.viewProduct.click();
+  }
+
+  async dismissDialog() {
+    // Intercept and abort all Google Ad requests to keep the test clean and fast
+    await this.page.route('**/*google*', (route) => route.abort());
+    await this.page.route('**/*doubleclick*', (route) => route.abort());
+    await this.page.route('**/*adservice*', (route) => route.abort());
   }
 }
