@@ -36,14 +36,7 @@ test.describe('Product Page Testing', async () => {
 
     await productsPage.dismissDialog();
     await productsPage.goto();
-  });
 
-  /* ============================================
-     COMPREHENSIVE E2E SMOKE TEST
-     Run on deploy, covers full journey
-     ============================================ */
-
-  test.describe('E2E Test', () => {
     test('Verify product page visibility @smoke', async ({ page }) => {
       await test.step('Confirm product page url -> /products', async () => {
         await expect(page).toHaveURL('/products');
@@ -52,7 +45,14 @@ test.describe('Product Page Testing', async () => {
         await verifyProductPage(productsPage);
       });
     });
+  });
 
+  /* ============================================
+     COMPREHENSIVE E2E SMOKE TEST
+     Run on deploy, covers full journey
+     ============================================ */
+
+  test.describe('E2E Test', () => {
     test('Verify product page navigation to product details', async ({
       page,
     }) => {
