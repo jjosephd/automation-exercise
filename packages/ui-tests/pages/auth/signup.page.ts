@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-import { User } from '../../data/auth.data';
+import { User } from 'shared';
 
 export class SignUpPage {
   private readonly signupPageHeader: Locator;

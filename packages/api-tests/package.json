@@ -1,0 +1,14 @@
+{
+  "name": "api-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  },
+  "dependencies": {
+    "shared": "*"
+  }
+}

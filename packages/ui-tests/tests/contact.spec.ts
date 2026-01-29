@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { ContactPage } from './pages/contact/contact.page';
-import { getNewUser, User } from './data/auth.data';
+import { ContactPage } from '../pages/contact/contact.page';
+import { getNewUser, User } from 'shared';
 
 import path from 'path';
 

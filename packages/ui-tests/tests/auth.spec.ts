@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from './pages/home/home.page';
-import { LoginPage } from './pages/auth/login.page';
-import { SignUpPage } from './pages/auth/signup.page';
-import { AccountCreated } from './pages/auth/account-created.page';
-import * as Data from './data/auth.data';
+import { HomePage } from '../pages/home/home.page';
+import { LoginPage } from '../pages/auth/login.page';
+import { SignUpPage } from '../pages/auth/signup.page';
+import { AccountCreated } from '../pages/auth/account-created.page';
+import * as Data from 'shared';
 
 async function completeFullRegistration(
   signupPage: SignUpPage,

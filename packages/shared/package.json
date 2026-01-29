@@ -1,0 +1,9 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}

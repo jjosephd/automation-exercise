@@ -2,8 +2,10 @@
 // Verify that detail detail is visible: product name, category, price, availability, condition, brand
 
 import { test, expect } from '@playwright/test';
-import { ProductsPage } from './pages/products/products.page';
-import { ProductDetailsPage } from './pages/products/product-details.page';
+import { ProductsPage } from '../pages/products/products.page';
+import { ProductDetailsPage } from '../pages/products/product-details.page';
+
+const searchValue = 'blue';
 
 /* ============================================
    HELPER: Reusable contact form flow
@@ -13,6 +15,7 @@ async function verifyProductPage(page: ProductsPage) {
   await page.expectHeadingVisible();
   await page.expectProductListVisible();
 }
+
 async function verifyProductDetailsPage(page: ProductDetailsPage) {
   await page.expectProductAvailabilityVisibile();
   await page.expectProductBrandVisible();
@@ -20,6 +23,11 @@ async function verifyProductDetailsPage(page: ProductDetailsPage) {
   await page.expectProductConditionVisible();
   await page.expectProductPriceVisible();
   await page.expectproductNameVisible();
+}
+
+async function completeSearch(page: ProductsPage) {
+  await page.fillSearchInput(searchValue);
+  await page.clickSearchBtn();
 }
 /* ============================================
      Instantiate the pages for the current 
@@ -30,21 +38,12 @@ test.describe('Product Page Testing', async () => {
   let productsPage: ProductsPage;
   let productDetailsPage: ProductDetailsPage;
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page, request }) => {
     productsPage = new ProductsPage(page);
     productDetailsPage = new ProductDetailsPage(page);
 
     await productsPage.dismissDialog();
     await productsPage.goto();
-
-    test('Verify product page visibility @smoke', async ({ page }) => {
-      await test.step('Confirm product page url -> /products', async () => {
-        await expect(page).toHaveURL('/products');
-      });
-      await test.step('Assert product page visibility', async () => {
-        await verifyProductPage(productsPage);
-      });
-    });
   });
 
   /* ============================================
@@ -53,6 +52,15 @@ test.describe('Product Page Testing', async () => {
      ============================================ */
 
   test.describe('E2E Test', () => {
+    test('Verify product page visibility @smoke', async ({ page }) => {
+      await test.step('Confirm product page url -> /products', async () => {
+        await expect(page).toHaveURL('/products');
+      });
+      await test.step('Assert product page visibility', async () => {
+        await verifyProductPage(productsPage);
+      });
+    });
+
     test('Verify product page navigation to product details', async ({
       page,
     }) => {
@@ -64,6 +72,16 @@ test.describe('Product Page Testing', async () => {
       });
       await test.step('Verify product details -> visible', async () => {
         await verifyProductDetailsPage(productDetailsPage);
+      });
+    });
+
+    test('Verify UI search returns results', async ({ page }) => {
+      await test.step('Fill the text input field', async () => {
+        await completeSearch(productsPage);
+      });
+      await test.step('Verify search results', async () => {
+        await productsPage.expectSearchHeadingVisisble();
+        await expect(page).toHaveURL(`/products?search=${searchValue}`);
       });
     });
   });

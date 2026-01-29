@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from './pages/auth/login.page';
-import { SignUpPage } from './pages/auth/signup.page';
-import { HomePage } from './pages/home/home.page';
-import * as Data from './data/auth.data';
-import { AccountCreated } from './pages/auth/account-created.page';
-import { DeleteAccountPage } from './pages/auth/delete-account.page';
+import { LoginPage } from '../pages/auth/login.page';
+import { SignUpPage } from '../pages/auth/signup.page';
+import { HomePage } from '../pages/home/home.page';
+import * as Data from 'shared';
+import { AccountCreated } from '../pages/auth/account-created.page';
+import { DeleteAccountPage } from '../pages/auth/delete-account.page';
 
 test.describe('Sign up page tests', () => {
   let signupPage: SignUpPage;

@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { HOME_PAGE_URL } from './home.data';
-import { User } from '../../data/auth.data';
+import { User } from 'shared';
 
 export class HomePage {
   private readonly login: Locator;
