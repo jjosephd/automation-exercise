@@ -1,5 +1,6 @@
 import requests
 import pytest
+import time
 
 def test_verify_user_exists(base_url):
     user_login = {
@@ -16,9 +17,11 @@ def test_verify_user_exists(base_url):
 
 def test_create_new_user(base_url):
 
+    timestamp = int(time.time())
+    email = f"testuser{timestamp}@example.com"
     req_params = {
         'name': 'Test User',
-        'email': 'testuser43922@example.com',
+        'email': email,
         'password': 'password123',
         'title': 'Mr',
         'birth_date': '1',

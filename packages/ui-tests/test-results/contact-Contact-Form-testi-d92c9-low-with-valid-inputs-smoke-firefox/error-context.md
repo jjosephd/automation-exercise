@@ -1,0 +1,148 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e5]:
+      - link "Website for automation practice" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img "Website for automation practice" [ref=e9]
+      - list [ref=e12]:
+        - listitem [ref=e13]:
+          - link " Home" [ref=e14] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e15]: 
+            - text: Home
+        - listitem [ref=e16]:
+          - link " Products" [ref=e17] [cursor=pointer]:
+            - /url: /products
+            - generic [ref=e18]: 
+            - text: Products
+        - listitem [ref=e19]:
+          - link " Cart" [ref=e20] [cursor=pointer]:
+            - /url: /view_cart
+            - generic [ref=e21]: 
+            - text: Cart
+        - listitem [ref=e22]:
+          - link " Signup / Login" [ref=e23] [cursor=pointer]:
+            - /url: /login
+            - generic [ref=e24]: 
+            - text: Signup / Login
+        - listitem [ref=e25]:
+          - link " Test Cases" [ref=e26] [cursor=pointer]:
+            - /url: /test_cases
+            - generic [ref=e27]: 
+            - text: Test Cases
+        - listitem [ref=e28]:
+          - link " API Testing" [ref=e29] [cursor=pointer]:
+            - /url: /api_list
+            - generic [ref=e30]: 
+            - text: API Testing
+        - listitem [ref=e31]:
+          - link " Video Tutorials" [ref=e32] [cursor=pointer]:
+            - /url: https://www.youtube.com/c/AutomationExercise
+            - generic [ref=e33]: 
+            - text: Video Tutorials
+        - listitem [ref=e34]:
+          - link " Contact us" [ref=e35] [cursor=pointer]:
+            - /url: /contact_us
+            - generic [ref=e36]: 
+            - text: Contact us
+  - generic [ref=e37]:
+    - heading "Contact Us" [level=2] [ref=e41]:
+      - text: Contact
+      - strong [ref=e42]: Us
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e46]: "Note: Below contact form is for testing purpose."
+        - heading "Get In Touch" [level=2] [ref=e47]
+        - generic [ref=e48]: Success! Your details have been submitted successfully.
+        - link " Home" [ref=e50] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e51]:
+            - generic [ref=e52]: 
+            - text: Home
+      - generic [ref=e54]:
+        - heading "Feedback For Us" [level=2] [ref=e55]
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: We really appreciate your response to our website.
+          - paragraph [ref=e58]:
+            - text: Kindly share your feedback with us at
+            - link "feedback@automationexercise.com" [ref=e59] [cursor=pointer]:
+              - /url: mailto:feedback@automationexercise.com
+            - text: .
+          - paragraph [ref=e60]: If you have any suggestion areas or improvements, do let us know. We will definitely work on it.
+          - paragraph [ref=e61]: Thank you
+  - insertion [ref=e63]:
+    - iframe [ref=e65]:
+      - generic [active] [ref=f7e1]:
+        - generic [ref=f7e6]:
+          - generic [ref=f7e7]:
+            - generic "Metric Unit Converter" [ref=f7e9]:
+              - link "Click here to continue" [ref=f7e10] [cursor=pointer]:
+                - /url: https://googleads.g.doubleclick.net/aclk?sa=l&ai=Cfbi0VWyKaaX0LOaf2NoP4rTCsQ3IwfOTggHhxLa_8xS5spfzkQ4QASD9tJ6VAWDJnpyN7KS0EaAB2puBqirIAQGoAwHIA8sEqgTrAU_Q7qJTX0rNyTGjNG9hN_IiY8CdRVvCzdJZc6-zz56dddAzcHVORCH3wWgnLT85nDdWEIkWXM4CywwQ8myYl6PwWBA5oIBSnqo-eV9K01YZw-RzsBfBlcywHWLrzhFK2Y6VfVlJEBiSKj_idl2-iKruIFcomcv2p9-USBPJArh8wzaHXsAmK42NFXS9Wn8aQtgSx9ladIBE2u5N6-I_fZltB5C22uxoLkPi1igspuShu0DsSXbNcbjTHauuOcxMo01_3FfA1JKCrpfNvO0PZk0WNDpXxx7eM3MN424djDFgOkF1FarZ8rSyTZTABNyxk_G3BYgF7-Ggwk2AB9rT0YkFqAenzLECqAemvhuoB8zOsQKoB_PRG6gHltgbqAeqm7ECqAeOzhuoB5PYG6gH8OAbqAfulrECqAf-nrECqAevvrECqAfVyRuoB9m2sQKoB5oGqAf_nrECqAffn7ECqAf4wrECqAf7wrEC2AcB0ggvCIBhEAEYnwMyCIqCgICAgIAIOg2AQIDAgICAgKiAAqgDSL39wTpY_Mm83MbNkgOxCcTI3eMEyGEKgAoBmAsByAsBqg0CVVPIDQHqDRMIgvS83MbNkgMV5g9WBR1imjDW8A0CiA4J2BMMiBQB0BUByhYCCgD4FgGAFwGyFwIYAboXAjgBshgJEgKoXRgBIgEA0BgBwhkCCAE&ae=1&gclid=EAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE&num=1&cid=CAQSrAEA56J1eQubEhFt64rIXjQENtc6yOlUVQxgaHDF7knqaqrF_wEZoGha90_FaOJlKQvFkqjR9slFOH-pJ68dXrIda2WOB9iuvwVEj489cwHQ6_kycyVckwQ22nvBENc5x6GRn0fptLGPfHknlRhXUqupd3MCuPhvLh7y15r_aMkwxG5ahgxXNGlOs4p0WBNpOMPSqYXiKrn3XfOcTRJsZNm_1sdUBjovSWLJYRC8GAE&sig=AOD64_36iSte2g3ay7KWw-Q6ccvW65Txrg&client=ca-pub-1677597403311019&rf=1&nb=0&adurl=https://metricunitconverter.com/aw-dhy2%3Futm_campaign%3D20808478959%26utm_custom1%3D186799937756%26utm_term%3D%26utm_content%3D778443337835%26utm_custom2%3Dautomationexercise.com%26utm_custom3%3D%26utm_custom4%3Dd%26utm_source%3DGoogle%26gad_source%3D5%26gad_campaignid%3D20808478959%26gclid%3DEAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE
+            - generic [ref=f7e11]:
+              - link "Click here to continue" [ref=f7e13] [cursor=pointer]:
+                - /url: https://googleads.g.doubleclick.net/aclk?sa=l&ai=Cfbi0VWyKaaX0LOaf2NoP4rTCsQ3IwfOTggHhxLa_8xS5spfzkQ4QASD9tJ6VAWDJnpyN7KS0EaAB2puBqirIAQGoAwHIA8sEqgTrAU_Q7qJTX0rNyTGjNG9hN_IiY8CdRVvCzdJZc6-zz56dddAzcHVORCH3wWgnLT85nDdWEIkWXM4CywwQ8myYl6PwWBA5oIBSnqo-eV9K01YZw-RzsBfBlcywHWLrzhFK2Y6VfVlJEBiSKj_idl2-iKruIFcomcv2p9-USBPJArh8wzaHXsAmK42NFXS9Wn8aQtgSx9ladIBE2u5N6-I_fZltB5C22uxoLkPi1igspuShu0DsSXbNcbjTHauuOcxMo01_3FfA1JKCrpfNvO0PZk0WNDpXxx7eM3MN424djDFgOkF1FarZ8rSyTZTABNyxk_G3BYgF7-Ggwk2AB9rT0YkFqAenzLECqAemvhuoB8zOsQKoB_PRG6gHltgbqAeqm7ECqAeOzhuoB5PYG6gH8OAbqAfulrECqAf-nrECqAevvrECqAfVyRuoB9m2sQKoB5oGqAf_nrECqAffn7ECqAf4wrECqAf7wrEC2AcB0ggvCIBhEAEYnwMyCIqCgICAgIAIOg2AQIDAgICAgKiAAqgDSL39wTpY_Mm83MbNkgOxCcTI3eMEyGEKgAoBmAsByAsBqg0CVVPIDQHqDRMIgvS83MbNkgMV5g9WBR1imjDW8A0CiA4J2BMMiBQB0BUByhYCCgD4FgGAFwGyFwIYAboXAjgBshgJEgKoXRgBIgEA0BgBwhkCCAE&ae=1&gclid=EAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE&num=1&cid=CAQSrAEA56J1eQubEhFt64rIXjQENtc6yOlUVQxgaHDF7knqaqrF_wEZoGha90_FaOJlKQvFkqjR9slFOH-pJ68dXrIda2WOB9iuvwVEj489cwHQ6_kycyVckwQ22nvBENc5x6GRn0fptLGPfHknlRhXUqupd3MCuPhvLh7y15r_aMkwxG5ahgxXNGlOs4p0WBNpOMPSqYXiKrn3XfOcTRJsZNm_1sdUBjovSWLJYRC8GAE&sig=AOD64_36iSte2g3ay7KWw-Q6ccvW65Txrg&client=ca-pub-1677597403311019&rf=1&nb=7&adurl=https://metricunitconverter.com/aw-dhy2%3Futm_campaign%3D20808478959%26utm_custom1%3D186799937756%26utm_term%3D%26utm_content%3D778443337835%26utm_custom2%3Dautomationexercise.com%26utm_custom3%3D%26utm_custom4%3Dd%26utm_source%3DGoogle%26gad_source%3D5%26gad_campaignid%3D20808478959%26gclid%3DEAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE
+              - link [ref=f7e14] [cursor=pointer]:
+                - /url: https://googleads.g.doubleclick.net/aclk?sa=l&ai=Cfbi0VWyKaaX0LOaf2NoP4rTCsQ3IwfOTggHhxLa_8xS5spfzkQ4QASD9tJ6VAWDJnpyN7KS0EaAB2puBqirIAQGoAwHIA8sEqgTrAU_Q7qJTX0rNyTGjNG9hN_IiY8CdRVvCzdJZc6-zz56dddAzcHVORCH3wWgnLT85nDdWEIkWXM4CywwQ8myYl6PwWBA5oIBSnqo-eV9K01YZw-RzsBfBlcywHWLrzhFK2Y6VfVlJEBiSKj_idl2-iKruIFcomcv2p9-USBPJArh8wzaHXsAmK42NFXS9Wn8aQtgSx9ladIBE2u5N6-I_fZltB5C22uxoLkPi1igspuShu0DsSXbNcbjTHauuOcxMo01_3FfA1JKCrpfNvO0PZk0WNDpXxx7eM3MN424djDFgOkF1FarZ8rSyTZTABNyxk_G3BYgF7-Ggwk2AB9rT0YkFqAenzLECqAemvhuoB8zOsQKoB_PRG6gHltgbqAeqm7ECqAeOzhuoB5PYG6gH8OAbqAfulrECqAf-nrECqAevvrECqAfVyRuoB9m2sQKoB5oGqAf_nrECqAffn7ECqAf4wrECqAf7wrEC2AcB0ggvCIBhEAEYnwMyCIqCgICAgIAIOg2AQIDAgICAgKiAAqgDSL39wTpY_Mm83MbNkgOxCcTI3eMEyGEKgAoBmAsByAsBqg0CVVPIDQHqDRMIgvS83MbNkgMV5g9WBR1imjDW8A0CiA4J2BMMiBQB0BUByhYCCgD4FgGAFwGyFwIYAboXAjgBshgJEgKoXRgBIgEA0BgBwhkCCAE&ae=1&gclid=EAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE&num=1&cid=CAQSrAEA56J1eQubEhFt64rIXjQENtc6yOlUVQxgaHDF7knqaqrF_wEZoGha90_FaOJlKQvFkqjR9slFOH-pJ68dXrIda2WOB9iuvwVEj489cwHQ6_kycyVckwQ22nvBENc5x6GRn0fptLGPfHknlRhXUqupd3MCuPhvLh7y15r_aMkwxG5ahgxXNGlOs4p0WBNpOMPSqYXiKrn3XfOcTRJsZNm_1sdUBjovSWLJYRC8GAE&sig=AOD64_36iSte2g3ay7KWw-Q6ccvW65Txrg&client=ca-pub-1677597403311019&rf=1&nb=8&adurl=https://metricunitconverter.com/aw-dhy2%3Futm_campaign%3D20808478959%26utm_custom1%3D186799937756%26utm_term%3D%26utm_content%3D778443337835%26utm_custom2%3Dautomationexercise.com%26utm_custom3%3D%26utm_custom4%3Dd%26utm_source%3DGoogle%26gad_source%3D5%26gad_campaignid%3D20808478959%26gclid%3DEAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE
+                - img [ref=f7e15]
+          - generic "Metric Unit Converter" [ref=f7e17]:
+            - link "Metric Unit Converter" [ref=f7e18] [cursor=pointer]:
+              - /url: https://googleads.g.doubleclick.net/aclk?sa=l&ai=Cfbi0VWyKaaX0LOaf2NoP4rTCsQ3IwfOTggHhxLa_8xS5spfzkQ4QASD9tJ6VAWDJnpyN7KS0EaAB2puBqirIAQGoAwHIA8sEqgTrAU_Q7qJTX0rNyTGjNG9hN_IiY8CdRVvCzdJZc6-zz56dddAzcHVORCH3wWgnLT85nDdWEIkWXM4CywwQ8myYl6PwWBA5oIBSnqo-eV9K01YZw-RzsBfBlcywHWLrzhFK2Y6VfVlJEBiSKj_idl2-iKruIFcomcv2p9-USBPJArh8wzaHXsAmK42NFXS9Wn8aQtgSx9ladIBE2u5N6-I_fZltB5C22uxoLkPi1igspuShu0DsSXbNcbjTHauuOcxMo01_3FfA1JKCrpfNvO0PZk0WNDpXxx7eM3MN424djDFgOkF1FarZ8rSyTZTABNyxk_G3BYgF7-Ggwk2AB9rT0YkFqAenzLECqAemvhuoB8zOsQKoB_PRG6gHltgbqAeqm7ECqAeOzhuoB5PYG6gH8OAbqAfulrECqAf-nrECqAevvrECqAfVyRuoB9m2sQKoB5oGqAf_nrECqAffn7ECqAf4wrECqAf7wrEC2AcB0ggvCIBhEAEYnwMyCIqCgICAgIAIOg2AQIDAgICAgKiAAqgDSL39wTpY_Mm83MbNkgOxCcTI3eMEyGEKgAoBmAsByAsBqg0CVVPIDQHqDRMIgvS83MbNkgMV5g9WBR1imjDW8A0CiA4J2BMMiBQB0BUByhYCCgD4FgGAFwGyFwIYAboXAjgBshgJEgKoXRgBIgEA0BgBwhkCCAE&ae=1&gclid=EAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE&num=1&cid=CAQSrAEA56J1eQubEhFt64rIXjQENtc6yOlUVQxgaHDF7knqaqrF_wEZoGha90_FaOJlKQvFkqjR9slFOH-pJ68dXrIda2WOB9iuvwVEj489cwHQ6_kycyVckwQ22nvBENc5x6GRn0fptLGPfHknlRhXUqupd3MCuPhvLh7y15r_aMkwxG5ahgxXNGlOs4p0WBNpOMPSqYXiKrn3XfOcTRJsZNm_1sdUBjovSWLJYRC8GAE&sig=AOD64_36iSte2g3ay7KWw-Q6ccvW65Txrg&client=ca-pub-1677597403311019&rf=1&nb=1&adurl=https://metricunitconverter.com/aw-dhy2%3Futm_campaign%3D20808478959%26utm_custom1%3D186799937756%26utm_term%3D%26utm_content%3D778443337835%26utm_custom2%3Dautomationexercise.com%26utm_custom3%3D%26utm_custom4%3Dd%26utm_source%3DGoogle%26gad_source%3D5%26gad_campaignid%3D20808478959%26gclid%3DEAIaIQobChMI5fK83MbNkgMV5g9WBR1imjDWEAEYASAAEgLVQvD_BwE
+        - img [ref=f7e22] [cursor=pointer]
+        - button [ref=f7e25] [cursor=pointer]:
+          - img [ref=f7e26]
+        - iframe
+  - contentinfo [ref=e66]:
+    - generic [ref=e71]:
+      - heading "Subscription" [level=2] [ref=e72]
+      - generic [ref=e73]:
+        - textbox "Your email address" [ref=e74]
+        - button "" [ref=e75] [cursor=pointer]:
+          - generic [ref=e76]: 
+        - paragraph [ref=e77]:
+          - text: Get the most recent updates from
+          - text: our site and be updated your self...
+    - paragraph [ref=e81]: Copyright © 2021 All rights reserved
+  - text: 
+  - insertion [ref=e82]:
+    - iframe [ref=e85]:
+      - iframe [ref=f9e1]:
+        - generic [ref=f13e2]:
+          - iframe [ref=f13e5]:
+            - generic [active] [ref=f18e1]:
+              - img "loading" [ref=f18e3]
+              - generic [ref=f18e4]:
+                - img "logo" [ref=f18e9]
+                - generic [ref=f18e11]:
+                  - generic [ref=f18e12]:
+                    - text: Share availability and
+                    - generic [ref=f18e13]: let
+                    - generic [ref=f18e14]: clients
+                  - generic [ref=f18e15]:
+                    - generic [ref=f18e16]: book
+                    - generic [ref=f18e17]: and
+                    - generic [ref=f18e18]: pay
+                    - generic [ref=f18e19]: for
+                    - generic [ref=f18e20]: appointments
+                  - generic [ref=f18e21]:
+                    - text: in
+                    - generic [ref=f18e22]:
+                      - img [ref=f18e24]
+                      - text: Calendar.
+                - generic [ref=f18e27] [cursor=pointer]:
+                  - img [ref=f18e28]
+                  - img [ref=f18e31]
+                  - generic [ref=f18e34]: Sign up
+                - generic:
+                  - img "photo" [ref=f18e35]
+                  - img "photo" [ref=f18e36]
+                  - img "photo" [ref=f18e37]
+              - img
+          - generic [ref=f13e6]:
+            - generic:
+              - img [ref=f13e10] [cursor=pointer]
+              - button [ref=f13e13] [cursor=pointer]:
+                - img [ref=f13e14]
+```
