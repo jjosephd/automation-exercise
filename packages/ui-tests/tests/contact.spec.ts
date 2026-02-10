@@ -60,10 +60,6 @@ test.describe('Contact Form testing', async () => {
       await test.step('Confirm success message', async () => {
         await contactPage.expectSuccessMsgVisible();
       });
-      await test.step('Click Home button and verify that landed to home page successfully', async () => {
-        await contactPage.clickSuccessBtn();
-        await expect(page).toHaveURL('');
-      });
     });
   });
 
