@@ -17,6 +17,12 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Python dependencies
+        run: pip install -r packages/api-tests/requirements.txt
       - name: Run tests
         run: npm test
       - uses: actions/upload-artifact@v4
