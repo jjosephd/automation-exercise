@@ -6,6 +6,12 @@ user_login = {
         'email': 'testuser4390@example.com',
         'password': 'password123',
     }
+user_login_invalid = {
+    'email': 'testuser4390@example.com',
+    'password': 'invalid_pass',
+}
+
+# POST Methods
 
 def test_verify_user_exists(base_url):
     
@@ -19,7 +25,7 @@ def test_verify_user_exists(base_url):
 
 def test_verify_login_without_email_param(base_url):
     '''
-    API 8: POST To Verify Login without email parameter
+    POST To Verify Login without email parameter
     '''
     response = requests.post(f"{base_url}/api/verifyLogin", data={'password': '123456'})
     data = response.json()
@@ -27,7 +33,17 @@ def test_verify_login_without_email_param(base_url):
     assert response.status_code == 200
     assert data['responseCode'] == 400
     assert 'Bad request, email or password parameter is missing in POST request' in data['message']
-   
+
+def test_post_verify_login_invalid_details(base_url):
+    '''
+    POST To Verify Login with invalid details
+    '''
+    response = requests.post(f"{base_url}/api/verifyLogin", data=user_login_invalid)
+    data = response.json()
+
+    assert response.status_code == 200
+    assert data['responseCode'] == 404
+    assert 'User not found' in data['message']
 
 def test_create_new_user(base_url):
 
@@ -60,4 +76,19 @@ def test_create_new_user(base_url):
     assert response.status_code == 200
     assert data['responseCode'] == 201
     assert 'User created' in data['message']
+
+
+
+# DELETE Methods
+
+def test_delete_to_verify_login(base_url):
+    '''
+    API 9: DELETE To Verify Login
+    '''
+    response = requests.delete(f"{base_url}/api/verifyLogin", data={'password': '123456'})
+    data = response.json()
+
+    assert response.status_code == 200
+    assert data['responseCode'] == 405
+    assert 'This request method is not supported' in data['message']  
 
