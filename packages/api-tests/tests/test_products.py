@@ -51,3 +51,4 @@ def test_put_to_all_brands_list(base_url):
     data = response.json()
     assert data['responseCode'] == 405
     assert 'This request method is not supported' in data['message']
+

@@ -2,11 +2,13 @@ import requests
 import pytest
 import time
 
-def test_verify_user_exists(base_url):
-    user_login = {
+user_login = {
         'email': 'testuser4390@example.com',
         'password': 'password123',
     }
+
+def test_verify_user_exists(base_url):
+    
     # Playwright 'form' corresponds to requests 'data' (form-encoded)
     response = requests.post(f"{base_url}/api/verifyLogin", data=user_login)
     data = response.json()
@@ -14,6 +16,18 @@ def test_verify_user_exists(base_url):
     assert response.status_code == 200
     assert data['responseCode'] == 200
     assert 'User exists' in data['message']
+
+def test_verify_login_without_email_param(base_url):
+    '''
+    API 8: POST To Verify Login without email parameter
+    '''
+    response = requests.post(f"{base_url}/api/verifyLogin", data={'password': '123456'})
+    data = response.json()
+
+    assert response.status_code == 200
+    assert data['responseCode'] == 400
+    assert 'Bad request, email or password parameter is missing in POST request' in data['message']
+   
 
 def test_create_new_user(base_url):
 
