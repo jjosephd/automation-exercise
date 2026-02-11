@@ -45,34 +45,12 @@ def test_post_verify_login_invalid_details(base_url):
     assert data['responseCode'] == 404
     assert 'User not found' in data['message']
 
-def test_create_new_user(base_url):
+def test_create_new_user(base_url, registered_user):
     '''
     POST To Create/Register User Account
     '''
-    timestamp = int(time.time())
-    email = f"testuser{timestamp}@example.com"
-    req_params = {
-        'name': 'Test User',
-        'email': email,
-        'password': 'password123',
-        'title': 'Mr',
-        'birth_date': '1',
-        'birth_month': 'January',
-        'birth_year': '1990',
-        'firstname': 'Test',
-        'lastname': 'User',
-        'company': 'Test Company',
-        'address1': '123 Test Street',
-        'address2': 'Apt 4',
-        'country': 'United States',
-        'zipcode': '12345',
-        'state': 'California',
-        'city': 'Los Angeles',
-        'mobile_number': '1234567890'
-    }
 
-
-    response = requests.post(f"{base_url}/api/createAccount", data=req_params)
+    response = requests.post(f"{base_url}/api/createAccount", data=registered_user)
     data = response.json()
 
     assert response.status_code == 200
