@@ -46,7 +46,9 @@ def test_post_verify_login_invalid_details(base_url):
     assert 'User not found' in data['message']
 
 def test_create_new_user(base_url):
-
+    '''
+    POST To Create/Register User Account
+    '''
     timestamp = int(time.time())
     email = f"testuser{timestamp}@example.com"
     req_params = {
@@ -76,19 +78,25 @@ def test_create_new_user(base_url):
     assert response.status_code == 200
     assert data['responseCode'] == 201
     assert 'User created' in data['message']
+    
 
 
 
 # DELETE Methods
 
-def test_delete_to_verify_login(base_url):
+def test_delete_to_verify_login(base_url, registered_user):
     '''
     API 9: DELETE To Verify Login
     '''
-    response = requests.delete(f"{base_url}/api/verifyLogin", data={'password': '123456'})
+    response = requests.delete(f"{base_url}/api/verifyLogin", data=registered_user)
     data = response.json()
 
     assert response.status_code == 200
     assert data['responseCode'] == 405
     assert 'This request method is not supported' in data['message']  
 
+def test_delete_user(base_url, registered_user):
+    response = requests.delete(f"{base_url}/api/deleteAccount", data=registered_user)
+    data = response.json()
+    assert response.status_code == 200
+    assert 'Account deleted' in data['message']
