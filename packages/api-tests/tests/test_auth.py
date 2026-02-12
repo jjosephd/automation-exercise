@@ -111,3 +111,14 @@ def test_update_invalid_user(base_url):
     assert response.status_code == 200
     assert data['responseCode'] == 404
     assert 'Account not found' in data['message']
+
+def test_update_user_invalid_password(base_url):
+    '''
+    EDGE CASE: Attempt to update user with invalid password
+    '''
+    response = requests.put(f"{base_url}/api/updateAccount", data={"email": user_login['email'], "password": "password"})
+    data = response.json()
+
+    assert response.status_code == 200
+    assert data['responseCode'] == 404
+    assert 'Account not found' in data['message']
