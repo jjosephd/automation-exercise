@@ -74,7 +74,18 @@ def test_delete_to_verify_login(base_url, registered_user):
     assert 'This request method is not supported' in data['message']  
 
 def test_delete_user(base_url, registered_user):
+    '''
+    API 12: DELETE METHOD To Delete User Account
+    '''
     response = requests.delete(f"{base_url}/api/deleteAccount", data=registered_user)
     data = response.json()
     assert response.status_code == 200
     assert 'Account deleted' in data['message']
+
+
+def test_update_user_account(base_url):
+
+    response = requests.put(f"{base_url}/api/updateAccount", data=user_login)
+    data = response.json()
+    assert response.status_code == 200
+    assert 'User updated' in data['message']
