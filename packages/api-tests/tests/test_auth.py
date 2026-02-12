@@ -2,6 +2,7 @@ import requests
 import pytest
 import time
 
+# Create a consistent user for login tests
 user_login = {
         'email': 'testuser4390@example.com',
         'password': 'password123',
@@ -14,7 +15,10 @@ user_login_invalid = {
 # POST Methods
 
 def test_verify_user_exists(base_url):
-    
+    '''
+    Test response for existing user with valid credentials
+    '''
+
     # Playwright 'form' corresponds to requests 'data' (form-encoded)
     response = requests.post(f"{base_url}/api/verifyLogin", data=user_login)
     data = response.json()
@@ -80,12 +84,30 @@ def test_delete_user(base_url, registered_user):
     response = requests.delete(f"{base_url}/api/deleteAccount", data=registered_user)
     data = response.json()
     assert response.status_code == 200
+    assert data['responseCode'] == 200
     assert 'Account deleted' in data['message']
 
 
-def test_update_user_account(base_url):
+# PUT Methods
 
+def test_update_user_account(base_url):
+    '''
+    Update existing user account with valid credentials
+    '''
     response = requests.put(f"{base_url}/api/updateAccount", data=user_login)
     data = response.json()
     assert response.status_code == 200
+    assert data['responseCode'] == 200
     assert 'User updated' in data['message']
+
+
+def test_update_invalid_user(base_url):
+    '''
+    EDGE CASE: Attempt to update user with invalid name
+    '''
+    response = requests.put(f"{base_url}/api/updateAccount", data={"email": "email", "password": "password"})
+    data = response.json()
+
+    assert response.status_code == 200
+    assert data['responseCode'] == 404
+    assert 'Account not found' in data['message']
