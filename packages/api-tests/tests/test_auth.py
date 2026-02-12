@@ -87,11 +87,11 @@ def test_delete_user(base_url, registered_user):
     assert data['responseCode'] == 200
     assert 'Account deleted' in data['message']
 
-def test_delete_invalid_user(base_url, registered_user):
+def test_delete_invalid_user(base_url, invalid_user):
     '''
     EDGE CASE: DELETE METHOD To Delete User Account for an account that does not exist
     '''
-    response = requests.delete(f"{base_url}/api/deleteAccount", data=registered_user)
+    response = requests.delete(f"{base_url}/api/deleteAccount", data=invalid_user)
     data = response.json()
     assert response.status_code == 200
     assert data['responseCode'] == 404
