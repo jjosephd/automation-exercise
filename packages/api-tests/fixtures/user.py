@@ -46,7 +46,7 @@ def invalid_user(base_url):
     It creates a user and returns their credentials.
     """
     timestamp = int(time.time())
-    email = f"testuser{timestamp}@example.com"
+    email = f"invalid_user{timestamp}"
     password = 'password123'
     
     payload = {
@@ -69,8 +69,5 @@ def invalid_user(base_url):
         'mobile_number': '1234567890'
     }
     
-    # Create the user
-    requests.post(f"{base_url}/api/createAccount", data=payload)
-    
     # Return the data to the tests
-    return {'email': 'email', 'password': password}
+    return {'email': email, 'password': password}
