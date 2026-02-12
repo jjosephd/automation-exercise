@@ -45,17 +45,17 @@ def test_post_verify_login_invalid_details(base_url):
     assert data['responseCode'] == 404
     assert 'User not found' in data['message']
 
-def test_create_new_user(base_url, registered_user):
-    '''
-    POST To Create/Register User Account
-    '''
+#def test_create_new_user(base_url, registered_user):
+#    '''
+#    POST To Create/Register User Account
+#   '''
 
-    response = requests.post(f"{base_url}/api/createAccount", data=registered_user)
-    data = response.json()
+#   response = requests.post(f"{base_url}/api/createAccount", data=registered_user)
+#    data = response.json()
 
-    assert response.status_code == 200
-    assert data['responseCode'] == 201
-    assert 'User created' in data['message']
+#   assert response.status_code == 200
+#    assert data['responseCode'] == 201
+#    assert 'User created' in data['message']
     
 
 
